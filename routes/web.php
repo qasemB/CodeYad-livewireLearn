@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Index;
 use App\Http\Livewire\TasksComp;
 use Illuminate\Support\Facades\Route;
 
@@ -14,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', Index::class);
 Route::get('/task/{userId}', TasksComp::class);
