@@ -19,5 +19,12 @@
 
 
         @livewireScripts
+
+        <script>
+            window.livewire.on('handleShowAlertJs',function(){
+                alert('aaa')
+            })
+        </script>
+
     </body>
 </html>

@@ -4,7 +4,7 @@
             background: url("/poster.jpg") no-repeat;
             background-position: center;
             background-size: cover;
-            width: 100vw;
+            width: 100%;
             height: 100vh;
         }
 
@@ -16,11 +16,23 @@
             border: 3px solid white;
         }
 
+        .btn{
+            width: 150px
+        }
+
     </style>
 
     <h1 class="title_top text-center text-white py-4 my-4">{{$title}}</h1>
     <h5 class="title_top text-center text-warning py-4 my-4">{{$title2}}</h5>
     <div class="text-center">
-        <a href="/task/1" class="btn btn-success px-5 py-3">ورود</a>
+        <a href="/task/1" class="btn btn-success  py-2">کارها</a>
+        <a href="/posts" class="btn btn-success py-2">پست ها</a>
     </div>
+
+    <div class="text-center mt-5">
+        <button class="btn btn-primary" wire:click="myFuncInIndex">نمایش</button>
+    </div>
+
+    <livewire:alert/>
+
 </div>

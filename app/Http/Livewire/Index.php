@@ -10,6 +10,11 @@ class Index extends Component
     public $title = "";
     public $title2 = "";
 
+    public function myFuncInIndex()
+    {
+        $this->emit('handleShowAlertJs');
+    }
+
     public function resetProperties()
     {
         $this->reset('title', 'title2');
