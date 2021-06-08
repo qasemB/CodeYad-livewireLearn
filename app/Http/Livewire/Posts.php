@@ -16,6 +16,13 @@ class Posts extends Component
 
     public $allPosts;
 
+    public function updatingTitle()
+    {
+        $this->validate([
+            'title' => 'required|string|min:5',
+        ]);
+    }
+
     protected $rules = [
         'title' => 'required|string|min:5',
         'content' => 'required | string|max:100',

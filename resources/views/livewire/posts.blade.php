@@ -46,9 +46,9 @@
     <div class="container">
         <h1 class="text-center">سلام دوستان عزیزم</h1>
         <h1 class="text-center {{$isSuccess ? 'text-success' : 'text-warning'}} ">{{$topTitle}}</h1>
-        <form wire:click="save">
+        <form wire:submit.prevent="save">
             <div class="action_content mt-2">
-                <button class="btn mx-1 btn-success" type="button" wire:click.stop="$toggle('isSuccess')"> add </button>
+                <button class="btn mx-1 btn-success" type="button"> add </button>
                 <input type="text" class="form-control mx-1" placeholder="عنوان" wire:model="title">
             </div>
             @error('title')
