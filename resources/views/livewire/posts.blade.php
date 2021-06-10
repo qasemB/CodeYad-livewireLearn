@@ -45,10 +45,9 @@
 
     <div class="container">
         <h1 class="text-center">سلام دوستان عزیزم</h1>
-        <h1 class="text-center {{$isSuccess ? 'text-success' : 'text-warning'}} ">{{$topTitle}}</h1>
         <form wire:submit.prevent="save">
             <div class="action_content mt-2">
-                <button class="btn mx-1 btn-success" type="button"> add </button>
+                <button class="btn mx-1 btn-success" type="submit"> add </button>
                 <input type="text" class="form-control mx-1" placeholder="عنوان" wire:model="title">
             </div>
             @error('title')
@@ -58,6 +57,10 @@
             @error('content')
                 <small class="text-danger text-center d-block">{{$message}}</small>
             @enderror
+            <input type="file" class="form-control mt-1" wire:model="photo">
+            @error('photo')
+                <small class="text-danger text-center d-block">{{$message}}</small>
+            @enderror
         </form>
        <ul>
            @foreach ($allPosts as $post)
@@ -65,6 +68,7 @@
                <h3 class="text-right">{{$post->title}}</h3>
                <p class="text-right">
                    {{$post->content}}
+                   <img src="{{$post->image}}" width="100" alt="">
                </p>
             </li>
             @endforeach
