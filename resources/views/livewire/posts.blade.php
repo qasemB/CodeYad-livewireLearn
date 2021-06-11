@@ -15,7 +15,8 @@
         .main_div .container{
             border: 3px solid purple; border-radius: 5px; box-shadow: 0 0 5px black;width:80vw; height: 80vh;
             background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(3px)
+            backdrop-filter: blur(3px);
+            overflow: auto;
         }
         .main_div .container ul{
             list-style-type: none;padding:0.5rem;margin: 0;
@@ -41,13 +42,30 @@
             justify-content: center;
             align-items: center;
         }
+        .loader {
+            border: 4px solid transparent; /* Light grey */
+            border-top: 4px solid #b7ecec; /* Blue */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            }
+
+            @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 
     <div class="container">
-        <h1 class="text-center">سلام دوستان عزیزم</h1>
+        <div class="loader" wire:loading wire:target="title"></div>
+        <h1 class="text-center" wire:loading.class="text-danger">سلام دوستان عزیزم</h1>
         <form wire:submit.prevent="save">
             <div class="action_content mt-2">
-                <button class="btn mx-1 btn-success" type="submit"> add </button>
+                <button class="btn mx-1 btn-success" type="submit" wire:loading.remove> add </button>
                 <input type="text" class="form-control mx-1" placeholder="عنوان" wire:model="title">
             </div>
             @error('title')
