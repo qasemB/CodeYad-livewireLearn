@@ -5,9 +5,12 @@ namespace App\Http\Livewire;
 use App\Models\Task;
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class TasksComp extends Component
 {
+
+    use WithPagination;
 
     public $user;
     public $new_task;
@@ -53,8 +56,12 @@ class TasksComp extends Component
         $this->task_Arr = Task::where('user_id', $userId)->get();
     }
 
+    protected $paginationTheme = 'bootstrap';
+
     public function render()
     {
-        return view('livewire.tasks-comp');
+        $tasks = Task::where('user_id', $this->user->id)->paginate(4);
+
+        return view('livewire.tasks-comp', ['tasks' => $tasks]);
     }
 }

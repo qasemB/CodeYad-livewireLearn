@@ -52,7 +52,7 @@
             <input type="text" class="form-control mx-1" wire:model="new_task">
         </div>
        <ul>
-           @foreach ($task_Arr as $task)
+           @foreach ($tasks as $task)
            <li>
                <div class="btn_box">
                 <button class="btn btn-sm btn-danger delete_btn rounded-circle" wire:click="deleteTask({{$task->id}})" >del</button>
@@ -62,5 +62,6 @@
             </li>
            @endforeach
        </ul>
+       {{$tasks->links('livewire.pagination-links')}}
     </div>
 </div>
