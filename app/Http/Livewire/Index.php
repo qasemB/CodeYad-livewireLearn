@@ -9,6 +9,12 @@ class Index extends Component
 
     public $title = "";
     public $title2 = "";
+    public $clockColor = true;
+
+    public function changeColor()
+    {
+        $this->clockColor = !$this->clockColor;
+    }
 
     public function myFuncInIndex()
     {

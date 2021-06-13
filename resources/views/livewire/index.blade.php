@@ -29,8 +29,18 @@
         <a href="/posts" class="btn btn-success py-2">پست ها</a>
     </div>
 
+    <div class="d-flex align-items-center justify-content-center mt-2">
+        <span class="{{$clockColor ? 'bg-dark' : 'bg-primary'}} text-light p-3 rounded">
+            now : {{now('Asia/Tehran')->format('H:i:s')}}
+        </span>
+    </div>
+    <div class="d-flex align-items-center justify-content-center mt-2">
+        <span class="bg-danger text-light p-3 rounded" wire:offline>
+            شما آفلاین هستید
+        </span>
+    </div>
     <div class="text-center mt-5">
-        <button class="btn btn-primary" wire:click="myFuncInIndex">نمایش</button>
+        <button class="btn btn-primary" wire:click.prefetch="changeColor">نمایش</button>
     </div>
 
     <livewire:alert/>
