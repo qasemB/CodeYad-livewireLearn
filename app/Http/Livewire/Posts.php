@@ -14,7 +14,7 @@ class Posts extends Component
     public $content = "";
     public $photo;
 
-    public $allPosts;
+    public $loaded = false;
 
     protected $rules = [
         'title' => 'required|string|min:5',
@@ -36,13 +36,16 @@ class Posts extends Component
         $this->reset('title', 'content');
     }
 
-    public function mount()
+    public function setLoaded()
     {
-        $this->allPosts = Post::all();
+        $this->loaded = true;
     }
+
 
     public function render()
     {
-        return view('livewire.posts');
+        return view('livewire.posts', [
+            'allPosts' =>  $this->loaded ? Post::all() : []
+        ]);
     }
 }

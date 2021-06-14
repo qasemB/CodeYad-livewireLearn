@@ -61,12 +61,13 @@
     </style>
 
     <div class="container">
-        <div class="loader" wire:loading wire:target="title"></div>
-        <h1 class="text-center" wire:loading.class="text-danger">سلام دوستان عزیزم</h1>
+        <div class="loader" wire:loading ></div>
+        <h1 class="text-center" >سلام دوستان عزیزم</h1>
         <form wire:submit.prevent="save">
             <div class="action_content mt-2">
-                <button class="btn mx-1 btn-success" type="submit" wire:loading.remove> add </button>
-                <input type="text" class="form-control mx-1" placeholder="عنوان" wire:model="title">
+                <button class="btn mx-1 btn-success" type="submit" > add </button>
+                <input type="text" class="form-control mx-1" placeholder="عنوان" wire:model="title" wire:dirty.class="bg-danger">
+                <span wire:dirty wire:target="title">درحال تایپ</span>
             </div>
             @error('title')
                 <small class="text-danger text-center d-block">{{$message}}</small>
@@ -80,7 +81,7 @@
                 <small class="text-danger text-center d-block">{{$message}}</small>
             @enderror
         </form>
-       <ul>
+       <ul wire:init="setLoaded">
            @foreach ($allPosts as $post)
            <li>
                <h3 class="text-right">{{$post->title}}</h3>
